@@ -6,7 +6,7 @@
   <div class="m-auto max-w-screen-sm border-2">
     <h2 class="text-center font-bold text-2xl my-7">Vue Calendar</h2>
     <div class="flex justify-between">
-      <h3 class="text-2xl m-2 font-bold text-black-600 ">{{ getMonthName(nomorBulan) }}</h3>
+      <h3 class="text-2xl m-2 font-bold text-black-600 ">{{ currentMonthName }}</h3>
       <h3 class="text-2xl m-2 font-bold text-black-600 ">{{ tahun }}</h3>
     </div>
     <!-- nama nama hari -->
@@ -42,36 +42,42 @@ export default {
   data(){
     return{
       hari: ['Sen','Sel','Rab', 'Kam', 'Jum', 'Sab', 'Min'],
-      nomorBulan: new Date().getMonth() + 1,
+      nomorBulan: new Date().getMonth(),
       tahun: new Date().getFullYear(),
       jumlahHari: null,
     }
   },
   methods: {
     daysInMonth(year, bulan){
-      return this.jumlahHari = new Date(year, bulan, 0).getDate();
+      return this.jumlahHari = new Date(year, bulan + 1, 0).getDate();
     },
 
     startDay(){
-      return new Date(this.tahun, this.nomorBulan - 1, 0).getDay()
+      return new Date(this.tahun, this.nomorBulan , 0).getDay()
     },
-    getMonthName(index){
-      const month = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
-      return this.bulan = month[index - 1]
-    },
+    
     next(){
-      if(this.nomorBulan <= 12){
+      if(this.nomorBulan === 11){
+        this.nomorBulan = 0;
+        this.tahun++
+      } else {
         this.nomorBulan++
-        this.getMonthName() + 1
       }
     },
     prev(){
-      if(this.nomorBulan > 1){
+      if(this.nomorBulan === 0){
+        this.nomorBulan = 11;
+        this.tahun--
+      } else {
         this.nomorBulan--
-        this.getMonthName() - 1
       }
     }
   },
+  computed: {
+    currentMonthName(){
+      return new Date(this.tahun ,this.nomorBulan).toLocaleString("default", { month: "long"})
+    }
+  }
   
 
   
