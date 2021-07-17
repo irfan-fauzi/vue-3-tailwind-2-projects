@@ -6,7 +6,7 @@
   <div class="m-auto max-w-screen-sm border-2">
     <h2 class="text-center font-bold text-2xl my-7">Vue Calendar</h2>
     <div class="flex justify-between">
-      <h3 class="text-2xl m-2 font-bold text-black-600 ">{{ bulan }}</h3>
+      <h3 class="text-2xl m-2 font-bold text-black-600 ">{{ getMonthName(nomorBulan) }}</h3>
       <h3 class="text-2xl m-2 font-bold text-black-600 ">{{ tahun }}</h3>
     </div>
     <!-- nama nama hari -->
@@ -32,7 +32,7 @@
       <button class="bg-blue-400 py-1 px-6 text-white hover:bg-blue-700 transition-all" @click="next()">Next</button>
     </section>  
     <!-- end section button -->
-    <h3>{{ getMonthName(nomorBulan) }}</h3>
+    
   </div>  
 </template>
 
@@ -43,7 +43,6 @@ export default {
     return{
       hari: ['Sen','Sel','Rab', 'Kam', 'Jum', 'Sab', 'Min'],
       nomorBulan: new Date().getMonth() + 1,
-      bulan: null,
       tahun: new Date().getFullYear(),
       jumlahHari: null,
     }
@@ -67,8 +66,10 @@ export default {
       }
     },
     prev(){
-      this.nomorBulan--
-      this.getMonthName() - 1
+      if(this.nomorBulan > 1){
+        this.nomorBulan--
+        this.getMonthName() - 1
+      }
     }
   },
   
