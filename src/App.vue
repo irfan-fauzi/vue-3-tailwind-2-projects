@@ -10,7 +10,7 @@
 
 
 <script>
-  import AppHeader from './components/AppHeader.vue'
+  import AppHeader from './pages/AppHeader.vue'
   export default {
     components: { AppHeader},
   }
