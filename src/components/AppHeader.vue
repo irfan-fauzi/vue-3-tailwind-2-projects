@@ -5,10 +5,10 @@
     
     <div class="flex justify-center gap-5">
       <router-link to="/todo">
-        todo
+        <h1 class="text-white font-bold text-xl hover:text-yellow-400">Todo list</h1>
       </router-link>
       <router-link to="/calendar">
-        calendar
+        <h1 class="text-white font-bold text-xl hover:text-yellow-400">Calendar</h1>
       </router-link>
     </div>
     
