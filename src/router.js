@@ -3,6 +3,7 @@ import Calendar from './pages/Calendar'
 import TodoList from './pages/TodoList'
 import Home from './pages/Home'
 import Markdown from './pages/Markdown'
+import Slider from './pages/Slider'
 
 const routes = [
   {
@@ -21,6 +22,10 @@ const routes = [
     path: '/markdown',
     component: Markdown
   },
+  {
+    path: '/slider',
+    component: Slider
+  }
 
 ]
 

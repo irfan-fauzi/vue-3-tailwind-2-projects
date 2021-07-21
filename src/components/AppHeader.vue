@@ -29,6 +29,10 @@ export default {
       {
         path: '/markdown',
         name: 'MarkDown'
+      },
+      {
+        path: '/slider',
+        name: 'Slider'
       }
       ]
     }
